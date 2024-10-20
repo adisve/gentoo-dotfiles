@@ -1,0 +1,55 @@
+#!/bin/sh
+# adis, 2024-03-25
+
+M2 = "HDMI-1"
+M1 = "eDP-1"
+
+function setting_laptop {
+  xrandr --output \
+    $M1 --mode 1920x1080 --rate 60.00 --output \
+    [[ $? -eq 0 ]] || notify-send "Laptop error"
+}
+
+function setting_dual { 
+  xrandr --output \
+    $M1 --off --output \
+    $M2 --mode 2560x1440 --output \
+    $M1 --off --output \
+    $M2 --mode 2560x1440 --output \
+    $M2 --mode 2560x1440 --right-of $M3 >/dev/null 2>&1
+    [[ $? -eq 0 ]] || notify-send "Not Connected"
+}
+
+function setting_dual_laptop_and_HDMI { 
+  xrandr --output \
+    $M1 --mode 1920x1080 --output \
+    $M2 --mode 2560x1080 --right-of $M1 >/dev/null 2>&1
+    [[ $? -eq 0 ]] || notify-send "Not Connected"
+}
+
+function keyrepeat_xcape {
+  # key rate, replay
+  xset r rate 300 50 || notify-send "xset rate error"
+  xset b off || notify-send "xset bell error"
+
+  # Screensaver off
+  xset s off
+  xset -dpms
+}
+
+case "$1" in
+  "laptop")
+    setting_laptop ;
+    keyrepeat_xcape ;
+    ;;
+  "dual")
+    setting_dual_school ;
+    keyrepeat_xcape ;
+    ;;
+  "laptop-hdmi")
+    setting_dual_laptop_and_HDMI ;
+    keyrepeat_xcape ;
+    ;;
+  *)
+    notify-send "Multi Monitor Error";;
+esac

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>SSH - Gentoo wiki</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"6b0f0a47ca7b665216eeeb2e","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"SSH","wgTitle":"SSH","wgCurRevisionId":1310682,"wgRevisionId":1310682,"wgArticleId":1629,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["SSH","Server","Daemons","Authentication"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"SSH","wgRelevantArticleId":1629,"wgIsProbablyEditable":!1,"wgRelevantPageIsProbablyEditable":!1,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgULSCurrentAutonym":"English","wgPageFormsTargetName":null,
+"wgPageFormsAutocompleteValues":[],"wgPageFormsAutocompleteOnAllChars":!1,"wgPageFormsFieldProperties":[],"wgPageFormsCargoFields":[],"wgPageFormsDependentFields":[],"wgPageFormsCalendarValues":[],"wgPageFormsCalendarParams":[],"wgPageFormsCalendarHTML":null,"wgPageFormsGridValues":[],"wgPageFormsGridParams":[],"wgPageFormsContLangYes":null,"wgPageFormsContLangNo":null,"wgPageFormsContLangMonths":[],"wgPageFormsHeightForMinimizingInstances":800,"wgPageFormsShowOnSelect":[],"wgPageFormsScriptPath":"/extensions/PageForms","edgValues":null,"wgPageFormsEDSettings":null,"wgAmericanDates":!1,"srfFilteredConfig":null,"wgULSPosition":"personal","wgULSisCompactLinksEnabled":!0,"wgTranslatePageTranslation":"source"};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.translate":"ready","ext.translate.tag.languages":"ready","ext.pygments":"ready","jquery.makeCollapsible.styles":"ready","mediawiki.toc.styles":"ready",
+"ext.smw.style":"ready","ext.smw.tooltip.styles":"ready","ext.uls.pt":"ready","ext.srf.styles":"ready","mediawiki.skinning.interface":"ready","mediawiki.skinning.content.externallinks":"ready","skins.tyrian.styles":"ready","skins.tyrian.icons":"ready"};RLPAGEMODULES=["ext.gentooPackages","ext.smw.style","ext.smw.tooltips","smw.entityexaminer","site","mediawiki.page.startup","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","ext.uls.compactlinks","ext.uls.interface"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/load.php?lang=en&amp;modules=ext.pygments%2Ctranslate%7Cext.smw.style%7Cext.smw.tooltip.styles%7Cext.translate.tag.languages%7Cext.uls.pt%7Cjquery.makeCollapsible.styles%7Cmediawiki.skinning.content.externallinks%7Cmediawiki.skinning.interface%7Cmediawiki.toc.styles%7Cskins.tyrian.icons%2Cstyles&amp;only=styles&amp;skin=tyrian"/>
+<link rel="stylesheet" href="/load.php?lang=en&amp;modules=ext.srf.styles&amp;only=styles&amp;skin=tyrian"/>
+<script async="" src="/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=tyrian"></script>
+<link rel="stylesheet" href="https://assets.gentoo.org/tyrian/bootstrap.min.css"/><link rel="stylesheet" href="https://assets.gentoo.org/tyrian/tyrian.min.css"/><style>#mw-indicator-mw-helplink {display:none;}</style>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=tyrian"/>
+<meta name="generator" content="MediaWiki 1.35.9"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#54487a"/>
+<link rel="alternate" type="application/rdf+xml" title="SSH" href="/index.php?title=Special:ExportRDF/SSH&amp;xmlmime=rdf"/>
+<link rel="shortcut icon" href="https://www.gentoo.org/favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/opensearch_desc.php" title="Gentoo Wiki (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://wiki.gentoo.org/api.php?action=rsd"/>
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
+<!--[if lt IE 9]><script src="/resources/lib/html5shiv/html5shiv.js"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-SSH rootpage-SSH skin-tyrian action-view">	<div class="mw-jump sr-only">
+		Jump to:		<a href="#top">content</a>
+	</div>
+	<header>
+		<div class="site-title">
+			<div class="container">
+				<div class="row">
+					<div class="site-title-buttons">
+						<div class="btn-group btn-group-sm">
+							<a href="https://get.gentoo.org/" role="button" class="btn get-gentoo"><span class="fa fa-fw fa-download"></span> <strong>Get Gentoo!</strong></a>
+							<div class="btn-group btn-group-sm">
+								<a class="btn gentoo-org-sites dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+									<span class="fa fa-fw fa-map-o"></span> <span class="hidden-xs">gentoo.org sites</span> <span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="https://www.gentoo.org/" title="Gentoo's main website"><span class="fa fa-home fa-fw"></span> gentoo.org</a></li>
+									<li><a href="https://wiki.gentoo.org/" title="Find and contribute documentation"><span class="fa fa-file-text-o fa-fw"></span> Wiki</a></li>
+									<li><a href="https://bugs.gentoo.org/" title="Discover and report issues with Gentoo"><span class="fa fa-bug fa-fw"></span> Bugs</a></li>
+									<li><a href="https://packages.gentoo.org/" title="Find software to install"><span class="fa fa-hdd-o fa-fw"></span> Packages</a></li>
+									<li><a href="https://forums.gentoo.org/" title="Discuss with the community"><span class="fa fa-comments-o fa-fw"></span> Forums</a></li>
+									<li class="divider"></li>
+									<li><a href="https://planet.gentoo.org/" title="Find out what's going on in the dev community"><span class="fa fa-rss fa-fw"></span> Planet</a></li>
+									<li><a href="https://archives.gentoo.org/" title="Read up on past discussions"><span class="fa fa-archive fa-fw"></span> Archives</a></li>
+									<li><a href="https://devmanual.gentoo.org/" title="Read the development guide"><span class="fa fa-book fa-fw"></span> Devmanual</a></li>
+									<li><a href="https://gitweb.gentoo.org/" title="Browse our source code in Gitweb"><span class="fa fa-code fa-fw"></span> Gitweb</a></li>
+									<li class="divider"></li>
+									<li><a href="https://infra-status.gentoo.org/" title="Get updates on the services provided by the Gentoo infra team"><span class="fa fa-server fa-fw"></span> Infra status</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="logo">
+						<a href="/" title="Back to the homepage" class="site-logo">
+							<img src="https://assets.gentoo.org/tyrian/site-logo.png"  alt="Gentoo Linux Logo" srcset="https://assets.gentoo.org/tyrian/site-logo.svg">
+						</a>
+						<span class="site-label">Wiki</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="tyrian-navbar" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse navbar-main-collapse">
+						<ul class="nav navbar-nav">
+							<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-help"><a href="/wiki/Special:MyLanguage/Help:Contents" title="The place to find out">Help</a></li><li id="n-Contribute.21"><a href="/wiki/Gentoo_Wiki:Contributor%27s_guide">Contribute!</a></li>			<li class="dropdown">
+				<a href="/wiki/Gentoo_Wiki:Menu-Documentation" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Documentation <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu"><li id="n-Gentoo-Handbook"><a href="/wiki/Handbook:Main_Page">Gentoo Handbook</a></li><li id="n-Gentoo-FAQ"><a href="/wiki/FAQ">Gentoo FAQ</a></li><li role="presentation" class="divider"></li><li id="n-Core-system"><a href="/wiki/Category:Core_system">Core system</a></li><li id="n-Hardware"><a href="/wiki/Category:Hardware">Hardware</a></li><li id="n-Software"><a href="/wiki/Category:Software">Software</a></li><li id="n-Desktop"><a href="/wiki/Category:Desktop">Desktop</a></li><li id="n-Server-.26-Security"><a href="/wiki/Category:Server_and_Security">Server &amp; Security</a></li><li id="n-Project-.26-Community"><a href="/wiki/Category:Project_and_Community">Project &amp; Community</a></li><li role="presentation" class="divider"></li><li id="n-Gentoo-Projects"><a href="/wiki/Project:Gentoo">Gentoo Projects</a></li>				</ul>
+			</li>						</ul>
+						<ul class="nav navbar-nav navbar-right hidden-xs">
+									<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-cog"></i> Tools <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/SSH" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/SSH" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print"><a href="javascript:print();" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink"><a href="/index.php?title=SSH&amp;oldid=1310682" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/index.php?title=SSH&amp;action=info" title="More information about this page">Page information</a></li><li id="t-smwbrowselink"><a href="/wiki/Special:Browse/:SSH" rel="search">Browse properties</a></li>			</ul>
+		</li>
+			<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+				<span class="fa fa-user" aria-label="Personal tools"></span>
+				User				<span class="caret"></span>
+			</a>
+			<ul class="dropdown-menu" role="menu">
+				<li id="pt-uls" class="active"><a href="#" class="uls-trigger">English</a></li><li id="pt-createaccount"><a href="/index.php?title=Special:CreateAccount&amp;returnto=SSH" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/index.php?title=Special:UserLogin&amp;returnto=SSH" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li>			</ul>
+		</li>
+								</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+		
+		<nav class="navbar navbar-grey navbar-stick" id="wiki-actions" role="navigation">
+			<div class="container"><div class="row">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="gw-toolbar">
+					<ul class="nav navbar-nav">
+					<li id="ca-nstab-main" class="selected active"><a href="/wiki/SSH" title="View the content page [c]" accesskey="c">Page</a></li><li id="ca-talk"><a href="/wiki/Talk:SSH" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>					</ul>
+							<form action="/index.php" id="searchform" class="navbar-form navbar-right" role="search">
+			<input type='hidden' name="title" value="Special:Search"/>
+
+				<div class="input-group">
+					<input type="search" name="search" placeholder="Search" title="Search Gentoo Wiki [f]" accesskey="f" id="searchInput" class="form-control"/>					<div class="input-group-btn"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchGoButton" class="searchButton btn btn-default"/><input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default"/></div>
+				</div>
+		</form>
+						<ul class="nav navbar-nav navbar-right hidden-xs">
+					<li id="ca-viewsource"><a href="/index.php?title=SSH&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></li><li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">more <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+					<li id="ca-history"><a href="/index.php?title=SSH&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></li>							</ul>
+						</li>
+					</ul>
+				</div>
+			</div></div>
+		</nav>
+		</header>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div id="content" class="mw-body" role="main">
+						<a id="top"></a>
+						
+						<h1 id="firstHeading" class="first-header" lang="en">
+							<span dir="auto">SSH</span>
+						</h1>
+
+						<div id="bodyContent" class="mw-body-content">
+							<div id="siteSub">From Gentoo Wiki</div>
+							<div id="contentSub">
+															</div>
+												                <div id="jump-to-nav"></div>
+					                <a class="mw-jump-link" href="#mw-head">Jump to:navigation</a>
+					                <a class="mw-jump-link" href="#searchInput">Jump to:search</a>
+
+							<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-pt-translate-header noprint nomobile" dir="ltr" lang="en">This page contains <span class="plainlinks"><a rel="nofollow" class="external text" href="https://wiki.gentoo.org/index.php?title=SSH&amp;oldid=1282070&amp;diff=1310682">changes</a></span> which are not marked for translation.</div><div class="mw-parser-output"><div class="mw-pt-languages noprint" lang="en" dir="ltr"><div class="mw-pt-languages-label">Other languages:</div><ul class="mw-pt-languages-list"><li><a href="/wiki/SSH/de" class="mw-pt-progress mw-pt-progress--med" title="SSH (55% translated)" lang="de" dir="ltr">Deutsch</a></li>
+<li><span class="mw-pt-languages-ui mw-pt-languages-selected mw-pt-progress mw-pt-progress--complete" lang="en" dir="ltr">English</span></li>
+<li><a href="/wiki/SSH/es" class="mw-pt-progress mw-pt-progress--low" title="SSH (36% translated)" lang="es" dir="ltr">español</a></li>
+<li><a href="/wiki/SSH/fr" class="mw-pt-progress mw-pt-progress--low" title="SSH (29% translated)" lang="fr" dir="ltr">français</a></li>
+<li><a href="/wiki/SSH/it" class="mw-pt-progress mw-pt-progress--stub" title="SSH (3% translated)" lang="it" dir="ltr">italiano</a></li>
+<li><a href="/wiki/SSH/ru" class="mw-pt-progress mw-pt-progress--high" title="SSH (63% translated)" lang="ru" dir="ltr">русский</a></li>
+<li><a href="/wiki/SSH/zh-cn" class="mw-pt-progress mw-pt-progress--med" title="SSH (44% translated)" lang="zh-Hans-CN" dir="ltr">中文（中国大陆）‎</a></li>
+<li><a href="/wiki/SSH/ja" class="mw-pt-progress mw-pt-progress--complete" title="SSH (95% translated)" lang="ja" dir="ltr">日本語</a></li>
+<li><a href="/wiki/SSH/ko" class="mw-pt-progress mw-pt-progress--low" title="SSH (31% translated)" lang="ko" dir="ltr">한국어</a></li></ul></div>
+<div id="infobox-stack" class="list-group" style="width: 25em; float: right; clear: right; font-size: 90%; margin-left: 1em;">
+<div class="list-group-item text-center" style="padding-top: 3px; padding-bottom: 3px; background-color: #463C65; color: white;"><b>Resources</b></div>
+<div id="infobox" class="list-group-item" style="display: flex; align-items: center; padding: 5px; min-height: 3em;"><span style="display: inline-block; width: 3em; overflow: hidden; text-align: center;"><span class="fa fa-home fa-fw fa-2x"></span></span><span><a rel="nofollow" class="external text" href="https://www.openssh.com/">Home</a></span></div>
+<div id="infobox" class="list-group-item" style="display: flex; align-items: center; padding: 5px; min-height: 3em;"><span style="display: inline-block; width: 3em; overflow: hidden; text-align: center;"><span class="fa fa-hdd-o fa-fw fa-2x"></span></span><span><a rel="nofollow" class="external text" href="https://packages.gentoo.org/packages/net-misc/openssh">Package information</a></span></div>
+<div id="infobox" class="list-group-item" style="display: flex; align-items: center; padding: 5px; min-height: 3em;"><span style="display: inline-block; width: 3em; overflow: hidden; text-align: center;"><span class="fa fa-wikipedia-w fa-fw fa-2x"></span></span><span><a href="https://en.wikipedia.org/wiki/Secure_Shell" class="extiw" title="wikipedia:Secure Shell">Wikipedia</a></span></div>
+<div id="infobox" class="list-group-item" style="display: flex; align-items: center; padding: 5px; min-height: 3em;"><span style="display: inline-block; width: 3em; overflow: hidden; text-align: center;"><img alt="Ohloh Logo" src="/images/thumb/c/c1/Ohloh-logo.png/30px-Ohloh-logo.png" decoding="async" width="30" height="30" srcset="/images/c/c1/Ohloh-logo.png 1.5x" /></span><span><a rel="nofollow" class="external text" href="https://www.openhub.net/p/openssh">Open Hub</a></span></div>
+</div>
+<p><b>SSH</b> (<b>S</b>ecure <b>SH</b>ell) is the ubiquitous tool for logging into and working on remote machines securely. All sensitive information is strongly encrypted, and in addition to the remote shell, SSH supports file transfer, and port forwarding for arbitrary protocols, allowing secure access to remote services. It replaces the classic <a href="https://en.wikipedia.org/wiki/telnet" class="extiw" title="wikipedia:telnet">telnet</a>, <a href="https://en.wikipedia.org/wiki/Berkeley_r-commands" class="extiw" title="wikipedia:Berkeley r-commands">rlogin</a>, and similar non-secure tools - but SSH is not just a remote shell, it is a complete environment for working with remote systems.
+</p><p>In addition to the main <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh</span> command, the SSH suite of programs includes tools such as <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"><a href="/wiki/Scp" class="mw-redirect" title="Scp">scp</a></span> (<b>S</b>ecure <b>C</b>opy <b>P</b>rogram), <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"><a href="/wiki/Sftp" class="mw-redirect" title="Sftp">sftp</a></span> (<b>S</b>ecure <b>F</b>ile <b>T</b>ransfer <b>P</b>rotocol), or <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator"><a href="/wiki/Keychain" title="Keychain">ssh-agent</a></span> to help with key management. The standard SSH port is port 22.
+</p><p>Several versions of SSH <a rel="nofollow" class="external text" href="https://www.openssh.com/history.html">have existed</a>.  Today the most popular implementation of SSH, and de-facto standard, is <a rel="nofollow" class="external text" href="https://www.openbsd.org/">OpenBSD</a>'s <b>OpenSSH</b>. This comes <b><a href="/wiki/System_set_(Portage)" title="System set (Portage)">pre-installed</a> on Gentoo</b>, and is published under a <a rel="nofollow" class="external text" href="https://cvsweb.openbsd.org/cgi-bin/cvsweb/~checkout~/src/usr.bin/ssh/LICENCE?rev=1.20&amp;content-type=text/plain">BSD ("and freer")</a> license.
+</p><p>SSH is multi-platform, and is very widely used: OpenSSH is installed by default on most Unix-like OSs, on Windows10, on MacOS, and can be installed on Android or "jailbroken" iOS (SSH clients are available). This makes SSH a great tool for working with heterogeneous systems.
+</p>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Installation"><span class="tocnumber">1</span> <span class="toctext">Installation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Check_install"><span class="tocnumber">1.1</span> <span class="toctext">Check install</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#USE_flags"><span class="tocnumber">1.2</span> <span class="toctext">USE flags</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Emerge"><span class="tocnumber">1.3</span> <span class="toctext">Emerge</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Commands"><span class="tocnumber">2.1</span> <span class="toctext">Commands</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#Escape_sequences"><span class="tocnumber">2.2</span> <span class="toctext">Escape sequences</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Passwordless_authentication_to_a_distant_SSH_server"><span class="tocnumber">2.3</span> <span class="toctext">Passwordless authentication to a distant SSH server</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="#Client"><span class="tocnumber">2.3.1</span> <span class="toctext">Client</span></a>
+<ul>
+<li class="toclevel-4 tocsection-10"><a href="#GnuPG"><span class="tocnumber">2.3.1.1</span> <span class="toctext">GnuPG</span></a></li>
+<li class="toclevel-4 tocsection-11"><a href="#ssh-keygen"><span class="tocnumber">2.3.1.2</span> <span class="toctext">ssh-keygen</span></a></li>
+</ul>
+</li>
+<li class="toclevel-3 tocsection-12"><a href="#Server"><span class="tocnumber">2.3.2</span> <span class="toctext">Server</span></a></li>
+<li class="toclevel-3 tocsection-13"><a href="#Single_machine_testing"><span class="tocnumber">2.3.3</span> <span class="toctext">Single machine testing</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-14"><a href="#Remote_services_over_ssh"><span class="tocnumber">2.4</span> <span class="toctext">Remote services over ssh</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#Copying_files_to_a_remote_host"><span class="tocnumber">2.5</span> <span class="toctext">Copying files to a remote host</span></a></li>
+<li class="toclevel-2 tocsection-16"><a href="#ssh-agent"><span class="tocnumber">2.6</span> <span class="toctext">ssh-agent</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-17"><a href="#Configuration"><span class="tocnumber">3</span> <span class="toctext">Configuration</span></a>
+<ul>
+<li class="toclevel-2 tocsection-18"><a href="#Create_keys"><span class="tocnumber">3.1</span> <span class="toctext">Create keys</span></a></li>
+<li class="toclevel-2 tocsection-19"><a href="#Server_configuration"><span class="tocnumber">3.2</span> <span class="toctext">Server configuration</span></a></li>
+<li class="toclevel-2 tocsection-20"><a href="#Client_configuration"><span class="tocnumber">3.3</span> <span class="toctext">Client configuration</span></a></li>
+<li class="toclevel-2 tocsection-21"><a href="#Intrusion_prevention"><span class="tocnumber">3.4</span> <span class="toctext">Intrusion prevention</span></a></li>
+<li class="toclevel-2 tocsection-22"><a href="#Service"><span class="tocnumber">3.5</span> <span class="toctext">Service</span></a>
+<ul>
+<li class="toclevel-3 tocsection-23"><a href="#OpenRC"><span class="tocnumber">3.5.1</span> <span class="toctext">OpenRC</span></a></li>
+<li class="toclevel-3 tocsection-24"><a href="#systemd"><span class="tocnumber">3.5.2</span> <span class="toctext">systemd</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-25"><a href="#Tips"><span class="tocnumber">4</span> <span class="toctext">Tips</span></a>
+<ul>
+<li class="toclevel-2 tocsection-26"><a href="#Terminal_multiplexers_to_preserve_sessions"><span class="tocnumber">4.1</span> <span class="toctext">Terminal multiplexers to preserve sessions</span></a></li>
+<li class="toclevel-2 tocsection-27"><a href="#SSH_over_intermittent_connections"><span class="tocnumber">4.2</span> <span class="toctext">SSH over intermittent connections</span></a></li>
+<li class="toclevel-2 tocsection-28"><a href="#Open_new_tabs_for_session_with_Kitty_terminal"><span class="tocnumber">4.3</span> <span class="toctext">Open new tabs for session with Kitty terminal</span></a></li>
+<li class="toclevel-2 tocsection-29"><a href="#Benchmark_the_optimal_rounds_for_an_ed25519_key"><span class="tocnumber">4.4</span> <span class="toctext">Benchmark the optimal rounds for an ed25519 key</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-30"><a href="#Troubleshooting"><span class="tocnumber">5</span> <span class="toctext">Troubleshooting</span></a>
+<ul>
+<li class="toclevel-2 tocsection-31"><a href="#Permissions_are_too_open"><span class="tocnumber">5.1</span> <span class="toctext">Permissions are too open</span></a></li>
+<li class="toclevel-2 tocsection-32"><a href="#Death_of_long-lived_connections"><span class="tocnumber">5.2</span> <span class="toctext">Death of long-lived connections</span></a></li>
+<li class="toclevel-2 tocsection-33"><a href="#New_key_does_not_get_used"><span class="tocnumber">5.3</span> <span class="toctext">New key does not get used</span></a></li>
+<li class="toclevel-2 tocsection-34"><a href="#X11_forwarding.2C_not_forwarding.2C_or_tunneling"><span class="tocnumber">5.4</span> <span class="toctext">X11 forwarding, not forwarding, or tunneling</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-35"><a href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li class="toclevel-1 tocsection-36"><a href="#External_resources"><span class="tocnumber">7</span> <span class="toctext">External resources</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Installation">Installation</span></h2>
+<h3><span class="mw-headline" id="Check_install">Check install</span></h3>
+<p>Deployments of Gentoo Linux should already have OpenSSH installed, as the <span style="white-space: nowrap;" class="plainlinks" title="External link to https&#58;//packages.gentoo.org for the net-misc/openssh package."><a rel="nofollow" class="external text" href="https://packages.gentoo.org/packages/net-misc/openssh"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;">net-misc/openssh</span></a><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-hdd-o fa-fw"></span></span> package is part of the <a href="/wiki/System_set_(Portage)" title="System set (Portage)">system set</a>. The presence and proper functioning of OpenSSH can be checked by running the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh</span> command, which should output a usage statement:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh</code></div><span class="mw-collapsible mw-collapsed"><pre>usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
+           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
+           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
+           [-i identity_file] [-J [user@]host[:port]] [-L address]
+           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+           [-w local_tun[:remote_tun]] destination [command]
+</pre></span></div>
+<p>If no usage statement is printed, OpenSSH may be corrupt, or not installed. Try re-installation by following the <a href="/wiki/SSH#Emerge" title="SSH">emerge section</a>, just as if rebuilding after a USE flag change. If OpenSSH were uninstalled, this should reinstall it. It should then remain installed, as part of the system set.
+</p><p>If this does not try to install OpenSSH, the package may have been <a href="/wiki//etc/portage/package.mask" title="/etc/portage/package.mask">masked</a>, or even listed in <a href="/wiki//etc/portage/profile/package.provided" title="/etc/portage/profile/package.provided">package.provided</a>, though this would be unusual.
+</p>
+<h3><span class="mw-headline" id="USE_flags">USE flags</span></h3>
+<p class="mw-empty-elt">      </p><div class="panel panel-default gp-panel">
+        <div class="panel-heading gp-panel-heading">
+          <h3 class="panel-title">
+            <span class="text-muted">USE flags for</span>
+            <a href="https://packages.gentoo.org/packages/net-misc/openssh">net-misc/openssh</a>
+            <small><span class="fa fa-external-link-square"></span></small>
+            <small class="gp-pkg-desc">Port of OpenBSD&#39;s free SSH release</small>
+          </h3>
+        </div>
+        <div class="table-responsive gp-useflag-table-container">
+                <table class="table gp-useflag-table">        <tbody><tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/+pie">+pie</a></code>
+          </td>
+          <td>
+            Build programs as Position Independent Executables (a security hardening technique)
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/+ssl">+ssl</a></code>
+          </td>
+          <td>
+            Enable additional crypto algorithms via OpenSSL
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/audit">audit</a></code>
+          </td>
+          <td>
+            Enable support for Linux audit subsystem using sys-process/audit
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/debug">debug</a></code>
+          </td>
+          <td>
+            Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/kerberos">kerberos</a></code>
+          </td>
+          <td>
+            Add kerberos support
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/ldns">ldns</a></code>
+          </td>
+          <td>
+            Use LDNS for DNSSEC/SSHFP validation.
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/libedit">libedit</a></code>
+          </td>
+          <td>
+            Use the libedit library (replacement for readline)
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/livecd">livecd</a></code>
+          </td>
+          <td>
+            Enable root password logins for live-cd environment.
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/pam">pam</a></code>
+          </td>
+          <td>
+            Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/security-key">security-key</a></code>
+          </td>
+          <td>
+            Include builtin U2F/FIDO support
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/selinux">selinux</a></code>
+          </td>
+          <td>
+            !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/static">static</a></code>
+          </td>
+          <td>
+            !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/test">test</a></code>
+          </td>
+          <td>
+            Enable dependencies and/or preparations necessary to run tests (usually controlled by FEATURES=test but can be toggled independently)
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/verify-sig">verify-sig</a></code>
+          </td>
+          <td>
+            Verify upstream signatures on distfiles
+          </td>
+        </tr>        <tr>
+          <td>
+            <code><a href="https://packages.gentoo.org/useflags/xmss">xmss</a></code>
+          </td>
+          <td>
+            Enable XMSS post-quantum authentication algorithm
+          </td>
+        </tr>      </tbody></table>
+        </div>
+        <div class="panel-footer gp-panel-footer">
+          <small class="pull-right">
+            Data provided by the <a href="https://packages.gentoo.org">Gentoo Package Database</a>
+            &#183;
+            Last update: 2024-10-14 00:30
+          </small>
+          <small>
+            <a href="/wiki/Handbook:AMD64/Working/USE">More information about USE flags</a>
+          </small>
+        </div>
+      </div>
+<p class="mw-empty-elt"></p>
+<h3><span class="mw-headline" id="Emerge">Emerge</span></h3>
+<p>After changing USE flags <a href="/wiki//etc/portage/package.use" title="/etc/portage/package.use">just for the OpenSSH package</a>, rebuild OpenSSH for the new flags to be applied. As OpenSSH is in the system set, <code>--oneshot</code> should be used to avoid adding it to the <a href="/wiki/Selected-packages_set_(Portage)" title="Selected-packages set (Portage)">world file</a>:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>emerge --ask&#160;--changed-use --oneshot net-misc/openssh</code></div></div> 
+<p>After changing any global USE flags in <a href="/wiki/Make.conf" class="mw-redirect" title="Make.conf">make.conf</a> that affect the OpenSSH package, emerge world to update to the new USE flags:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>emerge --ask&#160;--verbose --update --deep --newuse @world</code></div></div> 
+<h2><span class="mw-headline" id="Usage">Usage</span></h2>
+<h3><span class="mw-headline" id="Commands">Commands</span></h3>
+<p>OpenSSH provides several commands, see each command's <a href="/wiki/Man_page" title="Man page">man page</a> for usage information:
+</p>
+<ul><li><span class="plainlinks" title="External link for the scp man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/scp.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">scp(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - secure file copy</li>
+<li><span class="plainlinks" title="External link for the sftp man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/sftp.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">sftp(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - secure file transfer</li>
+<li><span class="plainlinks" title="External link for the ssh-add man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/ssh-add.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh-add(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - add private key identities to the authentication agent</li>
+<li><span class="plainlinks" title="External link for the ssh-agent man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/ssh-agent.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh-agent(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - authentication agent</li>
+<li><span class="plainlinks" title="External link for the ssh-copy-id man page."><a rel="nofollow" class="external text" href="https://linux.die.net/man/1/ssh-copy-id"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh-copy-id(1)</span></a></span><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a> - use locally available keys to authorize logins on a remote machine</li>
+<li><span class="plainlinks" title="External link for the ssh-keygen man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/ssh-keygen.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh-keygen(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - authentication key utility</li>
+<li><span class="plainlinks" title="External link for the ssh-keyscan man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/ssh-keyscan.1.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh-keyscan(1)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - gather SSH public keys from servers</li>
+<li><span class="plainlinks" title="External link for the sshd man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/sshd.8.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">sshd(8)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> - OpenSSH daemon</li></ul>
+<h3><span class="mw-headline" id="Escape_sequences">Escape sequences</span></h3>
+<p>During an active SSH session, pressing the tilde (<kbd style="color: black; font-size: small; border: 0.2em solid; border-color: #DDD #BBB #BBB #DDD; padding: 0 0.4em; background: #EEE; white-space: nowrap;">~</kbd>) key starts an escape sequence. Enter the following for a list of options:
+</p>
+<div class="cmd-box"><div><code style="color: white; font-weight: bold;">ssh&gt;</code><span class="tripleclick-separator"></span><code>~?</code></div></div>
+<p>Note that escapes are only recognized immediately after a newline. They may not always work with some shells, such as <a href="/wiki/Fish" title="Fish">fish</a>.
+</p>
+<h3><span class="mw-headline" id="Passwordless_authentication_to_a_distant_SSH_server">Passwordless authentication to a distant SSH server</span></h3>
+<p>Handy for <a href="/wiki/Git" title="Git">git</a> server management.
+</p>
+<div class="alert alert-success gw-box" style="padding-top: 8px; padding-bottom: 8px; background-color: #f5f5f5; border-color: #b8adde; color: #4d4370&#32;;"><strong><i class="fa fa-search-plus"></i> See also</strong><br />For more details see the <a href="/wiki/Security_Handbook/Securing_services#SSH" title="Security Handbook/Securing services">Security Handbook</a>.</div>
+<div class="alert alert-danger gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-exclamation-triangle"></i> Warning</strong><br />Leaving the passphrase empty implies the private key file will not be encrypted. An attacker having access to the local filesystem will be able to read the private key.</div>
+<div class="alert alert-info gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-sticky-note-o fa-rotate-180"></i> Note</strong><br />The default file names of the keys must not be changed, or the server may persist in asking for a password even after running <code>ssh-copy-id</code>. The file name will be one of: 
+<ul><li><span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">id_rsa</span></li>
+<li><span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">id_ecdsa</span></li>
+<li><span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">id_ed25519</span></li></ul>
+depending on the key algorithm used.</div>
+<p>Make sure an account for the user exists on the server. The clients' <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">id_ed25519.pub</span> will be copied to the server's <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh/authorized_keys</span> file in the user's home directory.
+</p>
+<h4><span class="mw-headline" id="Client">Client</span></h4>
+<p>There are two alternatives for creating and storing SSH keys: the first is to use <a href="/wiki/GnuPG" title="GnuPG">GnuPG</a>, the second is to use SSH itself. 
+</p>
+<h5><span class="mw-headline" id="GnuPG">GnuPG</span></h5>
+<p>See <a href="/wiki/Hetzner_Cloud_(ARM64)#Usage_of_GPG_keys_instead_of_SSH_keys" title="Hetzner Cloud (ARM64)">Usage of GPG keys instead of SSH keys</a>.
+</p>
+<h5><span class="mw-headline" id="ssh-keygen">ssh-keygen</span></h5>
+<p>Clients need public and private keys. A pair may be created with (of course, <b>not entering</b> a passphrase):
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh-keygen -t ed25519</code></div><span class="mw-collapsible mw-collapsed"><pre>Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/larry/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/larry/.ssh/id_ed25519
+Your public key has been saved in /home/larry/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:riDdFuPhN7alEsAvm717gM1IZBP3DYXGo5apQG7OUM1 larry@client
+The key's randomart image is:
++--[ED25519 256]--+
+| .+   ..+o.      |
+| o +   Ao+.o     |
+|. o A Oo  . .    |
+| =   + .o +      |
+|  o   . S= + .   |
+|     . *. B + .  |
+|      o.=  * o   |
+|     ...+ = .    |
+|      .. .+=     |
++----[SHA256]-----+
+</pre></span></div>
+<p>Then authorize the public key with the server:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh-copy-id -i ~/.ssh/id_ed25519.pub &lt;username&gt;@&lt;server&gt;</code></div><span class="mw-collapsible mw-collapsed"><pre>/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/larry/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+larry@&lt;server&gt;'s password: 
+ 
+Number of key(s) added: 1
+ 
+Now try logging into the machine, with:   "ssh '&lt;server&gt;'"
+and check to make sure that only the key(s) you wanted were added.
+</pre></span></div>
+<p>Afterwards a passwordless login should be possible doing:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh &lt;server&gt;</code></div><pre>larry@&lt;server&gt;</pre></div>
+<h4><span class="mw-headline" id="Server">Server</span></h4>
+<p>The file <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/sshd_config</span> should be set to <code>PasswordAuthentication no</code> after the client adds their public key.
+</p><p>Then <a href="/wiki/SSH#Service" title="SSH">restart the sshd service</a> to authenticate without passwords.
+</p>
+<h4><span class="mw-headline" id="Single_machine_testing">Single machine testing</span></h4>
+<p>The above procedure can be tested out locally:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh-keygen -t ed25519</code></div><span class="mw-collapsible mw-collapsed"><pre>Generating public/private ed25519 key pair.
+Enter file in which to save the key (/home/larry/.ssh/id_ed25519): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again:
+...
+</pre></span></div>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>mv ~/.ssh/id_ed25519.pub ~/.ssh/authorized_keys</code></div></div>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh localhost</code></div></div>
+<h3><span class="mw-headline" id="Remote_services_over_ssh">Remote services over ssh</span></h3>
+<p>SSH may be used to access remote services, such as HTTP, HTTPS, fileshares, etc., through an encrypted "tunnel". Remote service access is detailed in the <a href="/wiki/SSH_tunneling" title="SSH tunneling">SSH tunneling</a> and <a href="/wiki/SSH_jump_host" title="SSH jump host">SSH jump host</a> articles.
+</p>
+<h3><span class="mw-headline" id="Copying_files_to_a_remote_host">Copying files to a remote host</span></h3>
+<p>The <a href="/wiki/SFTP" title="SFTP">SFTP</a> command, a part of SSH, uses the SSH File Transfer Protocol to copy files to a remote host. <a href="/wiki/Rsync" title="Rsync">rsync</a> is also an alternative for this.
+</p>
+<div class="alert alert-info gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-sticky-note-o fa-rotate-180"></i> Note</strong><br />The <a rel="nofollow" class="external text" href="https://www.openssh.com/txt/release-8.0">OpenSSH 8.0 release notes</a>, from 2019, state "<i>The scp protocol is outdated, inflexible and not readily fixed. We recommend the use of more modern protocols like sftp and rsync for file transfer instead.</i>". The <a rel="nofollow" class="external text" href="https://www.openssh.com/txt/release-8.8">OpenSSH 8.8 release notes</a>, from 2021, state "<i>A near-future release of OpenSSH will switch scp(1) from using the legacy scp/rcp protocol to using SFTP by default.</i>".</div>
+<h3><span class="mw-headline" id="ssh-agent">ssh-agent</span></h3>
+<p>OpenSSH comes with <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-agent</span>, a daemon to cache and prevent from frequent ssh password entries. When run, the environment variable <var>SSH_AUTH_SOCK</var> is used to point to ssh-agent's communication socket. The normal way to setup <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-agent</span> is to run it as the top most process of the user's session. Otherwise the environment variables will not be visible inside the session.
+</p><p>Depending on the way the graphical user session is configured to launch, it can be tricky to find a suitable way to launch <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-agent</span>. As an example for the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">lightdm</span> display manager, edit and change <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/lightdm/Xsession</span> from:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>exec $command
+</code></div></div>
+<p>into:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>exec ssh-agent $command
+</code></div></div>
+<p>To tell <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-agent</span> the password once per session, either run <code>ssh-add</code> manually or make use of the <code>AddKeysToAgent</code> option.
+</p><p>Recent <a href="/wiki/Xfce" title="Xfce">Xfce</a> will start <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-agent</span> (and <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">gpg-agent</span>) automatically. If both are installed both will be started which makes identity management especially with SmartCards more complicated. Either stop XFCE from autostarting at least SSH's agent or disable both and use the shell, X-session or similar.
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>xfconf-query -c xfce4-session -p /startup/ssh-agent/enabled -n -t bool -s false
+</code></div><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>xfconf-query -c xfce4-session -p /startup/gpg-agent/enabled -n -t bool -s false
+</code></div></div>
+<h2><span class="mw-headline" id="Configuration">Configuration</span></h2>
+<h3><span class="mw-headline" id="Create_keys">Create keys</span></h3>
+<div class="alert alert-warning gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-exclamation-circle"></i> Important</strong><br />This section pertains to the keys used by the system, <b>not</b> the user keys that reside in <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh</span>.</div>
+<p>In order to provide a secure shell, cryptographic keys are used to manage the encryption, decryption, and hashing functionalities offered by SSH.
+</p><p>On first run, the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">sshd</span> init-script will generate all system keys if they don't already exist. Usually there is no need to recreate them (unless the system has been compromised), but if such a need arises, this can be done manually through the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-keygen</span> command (RSA, ECDSA and Ed25519 algorithms):
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>ssh-keygen -t rsa -b 4096 -f /etc/ssh/ssh_host_rsa_key -N ""
+</code></div><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""
+</code></div><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key -N ""
+</code></div></div>
+<div class="alert alert-warning gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-exclamation-circle"></i> Important</strong><br />To reduce the attack vector, enable only one trusted algorithm, as shown below:
+<div class="box-caption"><span class="label" style="margin-right: .5em; background-color: #54487A">FILE</span> <strong><code style="border: none; background: none; color: #54487A; margin-right: .5em;">/etc/ssh/sshd_config</code></strong><strong></strong></div> <div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span># Only Ed25519 host key
+HostKey /etc/ssh/ssh_host_ed25519_key
+</pre></div>
+<p>And remove other <code>HostKey</code> keys, if present.
+</p><p>Check that only the key with the specified algorithm is used:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh-keyscan &lt;SERVER IP&gt;</code></div></div></div>
+<h3><span class="mw-headline" id="Server_configuration">Server configuration</span></h3>
+<p>The SSH server is usually configured in the <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/sshd_config</span> file, though it is also possible to perform further configuration in OpenRC's <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/conf.d/sshd</span>, including changing the location of the configuration file. For detailed information on how to configure the server see the <span class="plainlinks" title="External link for the sshd_config man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/sshd_config.5.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">sshd_config(5)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> man page.
+</p><p>The server provides means to validate its configuration using test mode:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>/usr/sbin/sshd -t</code></div></div>
+<div class="alert alert-warning gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-exclamation-circle"></i> Important</strong><br />Always validate the configuration changes prior restarting the service in order to keep the remote login available.</div>
+<h3><span class="mw-headline" id="Client_configuration">Client configuration</span></h3>
+<p>The <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh</span> client and related programs (<span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">scp</span>, <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">sftp</span>, etc.) can be configured using the following files:
+</p>
+<ul><li><span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh/config</span></li>
+<li><span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/ssh_config</span></li></ul>
+<p>For more information read the <span class="plainlinks" title="External link for the ssh_config man page."><a rel="nofollow" class="external text" href="https://man.archlinux.org/man/ssh_config.5.en"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;" class="plainlinks">ssh_config(5)</span></a><a href="/wiki/Special:MyLanguage/man_page" title="Special:MyLanguage/man page"><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-life-ring fa-fw"></span></a></span> <a href="/wiki/Man_page" title="Man page">man page</a>.
+</p>
+<h3><span class="mw-headline" id="Intrusion_prevention">Intrusion prevention</span></h3>
+<p>SSH is a commonly attacked service. Tools such as <a href="/wiki/Sshguard" title="Sshguard">sshguard</a> and <a href="/wiki/Fail2ban" title="Fail2ban">fail2ban</a> monitor logs and black list remote users who have repeatedly attempted, yet failed to login. Utilize them as needed to secure a frequently attacked system.
+</p>
+<h3><span class="mw-headline" id="Service">Service</span></h3>
+<p>Commands to run the SSH server will depend on active init system.
+</p>
+<h4><span class="mw-headline" id="OpenRC">OpenRC</span></h4>
+<p>Add the OpenSSH daemon to the default runlevel:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>rc-update add sshd default</code></div></div>
+<p>Start the sshd daemon with:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>rc-service sshd start</code></div></div>
+<p>The OpenSSH server can be controlled like any other <a href="/wiki/OpenRC" title="OpenRC">OpenRC</a>-managed service:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>rc-service sshd start
+</code></div><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>rc-service sshd stop
+</code></div><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>rc-service sshd restart
+</code></div></div>
+<div class="alert alert-info gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-sticky-note-o fa-rotate-180"></i> Note</strong><br />Active SSH connections to the server remain unaffected when issuing <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">rc-service sshd restart</span>.</div>
+<h4><span class="mw-headline" id="systemd">systemd</span></h4>
+<p>To have the OpenSSH daemon start when the system starts:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>systemctl enable sshd.service</code></div><pre>Created symlink from /etc/systemd/system/multi-user.target.wants/sshd.service to /usr/lib64/systemd/system/sshd.service.
+</pre></div>
+<p>To start the OpenSSH daemon now:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>systemctl start sshd.service</code></div></div>
+<p>To check if the service has started:
+</p>
+<div class="cmd-box"><div><code style="color: #ef2929; font-weight: bold;">root <span style="color:royalblue;">#</span></code><span class="tripleclick-separator"></span><code>systemctl status sshd.service</code></div></div>
+<h2><span class="mw-headline" id="Tips">Tips</span></h2>
+<h3><span class="mw-headline" id="Terminal_multiplexers_to_preserve_sessions">Terminal multiplexers to preserve sessions</span></h3>
+<p>It is possible to use a <a href="/wiki/Recommended_tools#Terminal_multiplexers" title="Recommended tools">terminal multiplexer</a> to resume a session after a dropped connection. <a href="/wiki/Tmux" title="Tmux">Tmux</a> and <a href="/wiki/Screen" title="Screen">Screen</a> are two popular multiplexers that can be used to be able to reconnect to a session, even if a command was running when the connection dropped out.
+</p>
+<h3><span class="mw-headline" id="SSH_over_intermittent_connections">SSH over intermittent connections</span></h3>
+<p>When on unstable Internet connections, or when roaming between networks (such as when moving wifi networks), <a href="/wiki/Mosh" title="Mosh">mosh</a> can help avoid dropping SSH sessions.
+</p>
+<h3><span class="mw-headline" id="Open_new_tabs_for_session_with_Kitty_terminal">Open new tabs for session with Kitty terminal</span></h3>
+<p>By using the <a rel="nofollow" class="external text" href="https://sw.kovidgoyal.net/kitty/kittens/ssh/#opt-kitten-ssh.remote_kitty">SSH kitten</a> for the <a href="/wiki/Kitty" title="Kitty">Kitty</a> terminal emulator, it is possible to open new "tabs", or windows, on the current SSH session without having log in again.
+</p><p>Kitty also provides other practical SSH functionality.
+</p>
+<h3><span class="mw-headline" id="Benchmark_the_optimal_rounds_for_an_ed25519_key">Benchmark the optimal rounds for an ed25519 key</span></h3>
+<div class="alert alert-success gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-check-circle"></i> Tip</strong><br />It is highly advisable to conduct benchmarking for the <i>ed25519</i>  key generation process, particularly considering the default value of 16 rounds and the potential performance improvements achievable with higher round values.</div>
+<div class="box-caption"><span class="label" style="margin-right: .5em; background-color: #54487A">FILE</span> <strong><code style="border: none; background: none; color: #54487A; margin-right: .5em;">ssh-benchmark.sh</code></strong><strong>Benchmark SSH Ciphers</strong></div> <div class="mw-highlight mw-highlight-lang-bash mw-content-ltr" dir="ltr"><pre><span></span><span class="ch">#!/bin/sh</span>
+
+<span class="nv">rounds</span><span class="o">=</span><span class="s2">&quot;16 32 64 100 150&quot;</span>
+<span class="nv">num_runs</span><span class="o">=</span><span class="m">20</span>
+
+<span class="k">for</span><span class="w"> </span>r<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$rounds</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;Benchmarking &#39;ssh-keygen -t ed25519 -a %s&#39; on average:\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$r</span><span class="s2">&quot;</span>
+<span class="w">    </span><span class="nv">total_time</span><span class="o">=</span><span class="m">0</span>
+<span class="w">    </span><span class="nv">i</span><span class="o">=</span><span class="m">1</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-le<span class="w"> </span><span class="nv">$num_runs</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nv">start_time</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s.%N<span class="k">)</span>
+<span class="w">        </span>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$r</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-N<span class="w"> </span><span class="nb">test</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">        </span><span class="nv">end_time</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%s.%N<span class="k">)</span>
+<span class="w">        </span><span class="nv">runtime</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$end_time</span><span class="s2"> - </span><span class="nv">$start_time</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+<span class="w">        </span><span class="nv">total_time</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$total_time</span><span class="s2"> + </span><span class="nv">$runtime</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+<span class="w">        </span>rm<span class="w"> </span>test<span class="o">{</span>,.pub<span class="o">}</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="w">        </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;Run %s: %s seconds\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$runtime</span><span class="s2">&quot;</span>
+<span class="w">        </span><span class="nv">i</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
+<span class="w">    </span><span class="k">done</span>
+<span class="w">    </span><span class="nv">average_time</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;scale=3; </span><span class="nv">$total_time</span><span class="s2"> / </span><span class="nv">$num_runs</span><span class="s2">&quot;</span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
+<span class="w">    </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;Average execution time: %s seconds\n\n&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$average_time</span><span class="s2">&quot;</span>
+<span class="k">done</span>
+</pre></div>
+<div class="alert alert-info gw-box" style="padding-top: 8px; padding-bottom: 8px;"><strong><i class="fa fa-sticky-note-o fa-rotate-180"></i> Note</strong><br />It is highly recommended to perform benchmarking for ed25519 key generation, considering both security and performance aspects. While the highest recommended round may offer superior security, it's essential to find the optimal balance based on individual requirements and time constraints. By conducting benchmark tests, one can evaluate the trade-off between security and performance, ensuring the selection of an appropriate round value for ed25519 keys.</div>
+<p>Benchmarking is a crucial process to measure the performance and efficiency of a system or a specific component, such as cryptographic algorithms. In the context of SSH (Secure Shell) ciphers, it is important to determine the optimal number of rounds for generating <i>ed25519</i> keys.
+</p><p>The provided script, <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-benchmark.sh</span>, conducts benchmarking on the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-keygen</span> command with different round values for <i>ed25519</i> keys. The script executes the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh-keygen</span> command multiple times with varying round values and measures the execution time for each run. It then calculates the average execution time for each round value.
+</p><p>By benchmarking different round values, system administrators and security professionals can identify the optimal round value that strikes a balance between security and performance. Higher round values generally provide stronger security but can result in increased computational overhead. Finding the right balance ensures that <i>ed25519</i> keys are generated efficiently without compromising security.
+</p><p>Benchmarking helps identify potential bottlenecks, vulnerabilities, or areas that require improvement in security systems. It assists in selecting the most suitable algorithms and configurations for a particular use case, ensuring that security measures are robust and effective.
+</p>
+<h2><span class="mw-headline" id="Troubleshooting">Troubleshooting</span></h2>
+<p>There are 3 different levels of debug modes that can help troubleshooting issues. With the <code>-v</code> option SSH prints debugging messages about its progress. This is helpful in debugging connection, authentication, and configuration problems. Multiple <code>-v</code> options increase the verbosity. Maximum verbosity is three levels deep.
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh example.org -v
+</code></div><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh example.org -vv
+</code></div><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh example.org -vvv
+</code></div></div>
+<h3><span class="mw-headline" id="Permissions_are_too_open">Permissions are too open</span></h3>
+<p>An ssh connection will only work if the file permissions of the <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh</span> directory and contents are correct.
+</p>
+<ul><li>The <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh</span> directory permissions should be 700 (drwx------), i.e. the owner has full access and no one else has any access.</li>
+<li>Under <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh</span>:
+<ul><li>public key files' permissions should be 644 (-rw-r--r--), i.e. anyone may read the file, only the owner can write.</li>
+<li>all other files' permissions should be 600 (-rw-------), i.e. only the owner may read or write the file.</li></ul></li></ul>
+<p>These permissions need to be correct on the client and server.
+</p>
+<h3><span class="mw-headline" id="Death_of_long-lived_connections">Death of long-lived connections</span></h3>
+<p>Many internet access devices perform Network Address Translation (<a href="/wiki/NAT" class="mw-redirect" title="NAT">NAT</a>), a process that enables devices on a private network such as that typically found in a home or business place to access foreign networks, such as the internet, despite only having a single IP address on that network. Unfortunately, not all NAT devices are created equal, and some of them incorrectly close long-lived, occasional-use TCP connections such as those used by SSH.  This is generally observable as a sudden inability to interact with the remote server, even though the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">ssh</span> client program has not exited.
+</p><p>In order to resolve the issue, OpenSSH clients and servers can be configured to send a 'keep alive', or invisible message aimed at maintaining and confirming the live status of the link:
+</p>
+<ul><li>To enable keep alive <i>for all clients connecting to the local server</i>, set <code>ClientAliveInterval 30</code> (or some other value, in seconds) within the <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/sshd_config</span> file.</li>
+<li>To enable keep alive <i>for all servers connected to by the local client</i>, set <code>ServerAliveInterval 30</code> (or some other value, in seconds) within the <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/ssh_config</span> or <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.ssh/config</span> file.</li>
+<li>Set <code>TCPKeepAlive no</code> to help eliminate disconnections.</li></ul>
+<p>For example, to modify the server's configuration, add following file:
+</p>
+<div class="box-caption"><span class="label" style="margin-right: .5em; background-color: #54487A">FILE</span> <strong><code style="border: none; background: none; color: #54487A; margin-right: .5em;">/etc/ssh/sshd_config.d/01_ClientAlive.conf</code></strong><strong>Help disconnects occur less often (server)</strong></div> <div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span># The following ClientAlive values will keep an inactive session open for 30 minutes
+ClientAliveCountMax 60
+ClientAliveInterval 30
+#
+# Deactivate TCPKeepAlive
+TCPKeepAlive no
+</pre></div>
+<p>To modify the client's configuration, add following file:
+</p>
+<div class="box-caption"><span class="label" style="margin-right: .5em; background-color: #54487A">FILE</span> <strong><code style="border: none; background: none; color: #54487A; margin-right: .5em;">/etc/ssh/ssh_config.d/01_ServerAlive.conf</code></strong><strong>Help disconnects occur less often (client)</strong></div> <div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span># The following ServerAlive values will keep an inactive session open for 2 hours
+ServerAliveInterval 60
+ServerAliveCountMax 120
+</pre></div>
+<h3><span class="mw-headline" id="New_key_does_not_get_used">New key does not get used</span></h3>
+<p>This scenario covers the case when a key to access a remote system has been created, the public key installed on the remote system, but the remote system is (for some reason) not accessible via ssh. This can happen if the name of the keyfile is not known to ssh.
+</p><p>Confirm which key files ssh is trying by running it with one of the verbose options, as described at the start of the <a href="/wiki/SSH#Troubleshooting" title="SSH">Troubleshooting section</a>. The verbose output will include the names of the keyfiles it is trying, and the one (if any) that actually gets used.
+</p><p>The default key files for the system are listed in the <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">/etc/ssh/ssh_config</span>, see the commented-out lines containing <code>IdentityFile</code> directives.
+</p><p>There are several ways to use a key with a non-default name.
+</p><p>The key name can be specified on the command line every time:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh -i ~/.ssh/my_keyfile user@remotesys</code></div></div>
+<p>Alternatively, add following ssh configuration file to add a special case for ssh to the remote system:
+</p>
+<div class="box-caption"><span class="label" style="margin-right: .5em; background-color: #54487A">FILE</span> <strong><code style="border: none; background: none; color: #54487A; margin-right: .5em;">/etc/ssh/ssh_config/02_remotesys.conf</code></strong><strong>Define keyfiles to use for host remotesys</strong></div> <div class="mw-highlight mw-highlight-lang-text mw-content-ltr" dir="ltr"><pre><span></span>Host remotesys
+    IdentityFile ~/.ssh/id_rsa
+    IdentityFile ~/.ssh/my_keyfile
+</pre></div>
+<p>If any are specified, it appears to be necessary to specify <i>all</i> the desired keys on a remote host. Read up on the ssh IdentityFile.
+</p>
+<h3><span id="X11_forwarding,_not_forwarding,_or_tunneling"></span><span class="mw-headline" id="X11_forwarding.2C_not_forwarding.2C_or_tunneling">X11 forwarding, not forwarding, or tunneling</span></h3>
+<p><b>Problem</b>: After having made the necessary changes to the configuration files for permitting X11 forwarding, it is discovered X applications are executing on the server and are not being forwarded to the client.
+</p><p><b>Solution</b>: What is likely occurring during SSH login into the remote server or host, the <var>DISPLAY</var> variable is either being unset or is being set <i>after</i> the SSH session sets it.
+</p><p>Test for this scenario perform the following after logging in remotely:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>echo $DISPLAY</code></div><pre>localhost:10.0
+</pre></div>
+<p>The output should be something similar to <code>localhost:10.0</code> or <code>localhost2.local:10.0</code> using server side <code>X11UseLocalhost no</code> setting. If the usual <code>:0.0</code> is not displayed, check to make sure the <var>DISPLAY</var> variable within <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.bash_profile</span> is not being unset or re-initializing. If it is, remove or comment out any custom initialization of the <var>DISPLAY</var> variable to prevent the code in <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.bash_profile</span> from executing during a SSH login:
+</p>
+<div class="cmd-box"><div><code style="color: #4E9A06; font-weight: bold;">user <span style="color:royalblue;">$</span></code><span class="tripleclick-separator"></span><code>ssh -t larry@localhost2 bash --noprofile</code></div></div>
+<p>Be sure to substitute <code>larry</code> in the command above with the proper username.
+</p><p>A trick that works to complete this task would be to define an alias within the users' <span style="font-family: monospace; font-size: 95%; color: #3c763d; font-weight: 600;">~/.bashrc</span> file.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span></h2>
+<ul><li><a href="/wiki/Autossh" title="Autossh">Autossh</a> — a command that detects when <a class="mw-selflink selflink">SSH</a> connections drop and automatically reconnects them.</li>
+<li><a href="/wiki/Dropbear" title="Dropbear">dropbear</a> — a lightweight SSH server. It runs on a variety of POSIX-based platforms.</li>
+<li><a href="/wiki/Keychain" title="Keychain">Keychain</a> — This document describes how to use <a class="mw-selflink selflink">SSH</a> shared keys along with the keychain program.</li>
+<li><a href="/wiki/Mosh" title="Mosh">Mosh</a> — a SSH client server that is aware of connectivity problems of the original SSH implementation.</li>
+<li><a href="/wiki/SCP" title="SCP">SCP</a> — an interactive file transfer program, similar to the <span style="font-family: monospace; font-size: 95%; font-weight: bold;" class="tripleclick-separator">copy</span> command, that copies files over an encrypted SSH transport.</li>
+<li><a href="/wiki/SFTP" title="SFTP">SFTP</a> — an interactive file transfer program, similar to <a href="/wiki/FTP" title="FTP">FTP</a>, which performs all operations over an encrypted <a class="mw-selflink selflink">SSH</a> transport.</li>
+<li><a href="/wiki/SSHFS" title="SSHFS">SSHFS</a> — a secure shell client used to mount remote filesystems to local machines.</li>
+<li><a href="/wiki/SSH_tunneling" title="SSH tunneling">SSH tunneling</a> — a method of connecting to machines on the other side of a gateway machine.</li>
+<li><a href="/wiki/SSH_jump_host" title="SSH jump host">SSH jump host</a> — employed as an alternative to <a href="/wiki/SSH_tunneling" title="SSH tunneling">SSH tunneling</a> to access internal machines through a gateway.</li>
+<li><a href="/wiki/Rsync" title="Rsync">rsync</a> — a powerful file sync program capable of efficient file transfers and directory synchronization.</li>
+<li><a href="/wiki/Security_Handbook/Securing_services#SSH" title="Security Handbook/Securing services">Securing the SSH service</a> (Security Handbook)</li>
+<li><a href="/wiki/Handbook:AMD64/Installation/Media#Optional:_Starting_the_SSH_daemon" title="Handbook:AMD64/Installation/Media">Starting the SSH daemon — Gentoo Handbook — Installation</a></li></ul>
+<h2><span class="mw-headline" id="External_resources">External resources</span></h2>
+<ul><li><span style="white-space: nowrap;" class="plainlinks" title="External link to https&#58;//packages.gentoo.org for the net-misc/connect package."><a rel="nofollow" class="external text" href="https://packages.gentoo.org/packages/net-misc/connect"><span style="font-family: monospace; font-size: 95%; color: MidnightBlue;">net-misc/connect</span></a><span style="color: grey; margin-left: 0.1em; font-size: 70%;" class="fa fa-hdd-o fa-fw"></span></span> — <a rel="nofollow" class="external text" href="https://github.com/gotoh/ssh-connect">SSH Proxy Command -- connect.c</a></li>
+<li><a rel="nofollow" class="external free" href="https://lonesysadmin.net/2011/11/08/ssh-escape-sequences-aka-kill-dead-ssh-sessions/amp/">https://lonesysadmin.net/2011/11/08/ssh-escape-sequences-aka-kill-dead-ssh-sessions/amp/</a> - A blog entry on escape sequences.</li>
+<li><a rel="nofollow" class="external free" href="https://hackaday.com/2017/10/18/practical-public-key-cryptography/">https://hackaday.com/2017/10/18/practical-public-key-cryptography/</a> - Practical public key cryptography (Hackaday).</li>
+<li><a rel="nofollow" class="external free" href="https://www.akadia.com/services/ssh_putty.html">https://www.akadia.com/services/ssh_putty.html</a> - Port forwarding explained.</li></ul>
+<!-- 
+NewPP limit report
+Cached time: 20241020030428
+Cache expiry: 86400
+Dynamic content: false
+Complications: []
+[SMW] In‐text annotation parser time: 0.002 seconds
+CPU time usage: 0.221 seconds
+Real time usage: 0.324 seconds
+Preprocessor visited node count: 5543/1000000
+Post‐expand include size: 111015/4194304 bytes
+Template argument size: 27925/4194304 bytes
+Highest expansion depth: 16/40
+Expensive parser function count: 42/150
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 14454/5000000 bytes
+Lua time usage: 0.030/7 seconds
+Lua virtual size: 4.75 MB/50 MB
+Lua estimated memory usage: 0 bytes
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  204.957      1 -total
+ 36.69%   75.193      1 Template:InfoBox_stack
+ 33.53%   68.720      4 Template:InfoBox
+ 31.24%   64.021      6 Template:Anchor
+ 27.70%   56.774      1 Template:InfoBox_homepage
+ 26.35%   54.015     10 Template:See_also
+ 23.78%   48.740      1 Template:InfoBox_header
+ 10.19%   20.885     36 Template:Link
+  7.50%   15.366     26 Template:GenericCmd
+  4.36%    8.944     14 Template:Cmd
+-->
+
+<!-- Saved in parser cache with key gentoo?hwiki:pcache:idhash:1629-0!dateformat=default and timestamp 20241020030428 and revision id 1310682
+ -->
+</div></div><div class="printfooter">
+Retrieved from "<a dir="ltr" href="https://wiki.gentoo.org/index.php?title=SSH&amp;oldid=1310682">https://wiki.gentoo.org/index.php?title=SSH&amp;oldid=1310682</a>"</div>
+<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Categories</a>: <ul><li><a href="/wiki/Category:SSH" title="Category:SSH">SSH</a></li><li><a href="/wiki/Category:Server" title="Category:Server">Server</a></li><li><a href="/wiki/Category:Daemons" title="Category:Daemons">Daemons</a></li><li><a href="/wiki/Category:Authentication" title="Category:Authentication">Authentication</a></li></ul></div></div>						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-md-offset-2 col-md-7">
+											<div class="spacer"></div>
+						<ul id="f-list">
+							<li id="lastmod>"> This page was last edited on 10 September 2024, at 00:44.</li><li id="privacy>"><a href="/wiki/Gentoo_Wiki:Privacy_policy" class="mw-redirect" title="Gentoo Wiki:Privacy policy">Privacy policy</a></li><li id="about>"><a href="/wiki/Gentoo_Wiki:About" title="Gentoo Wiki:About">About Gentoo Wiki</a></li><li id="disclaimer>"><a href="/wiki/Gentoo_Wiki:General_disclaimer" title="Gentoo Wiki:General disclaimer">Disclaimers</a></li>						</ul>
+									</div>
+				<div class="col-xs-12 col-md-3">
+					<!-- No questions or comments, the Wiki has enough information on how to contact us. -->
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-3 col-md-2">
+					<ul class="footerlinks three-icons">
+						<li><a href="https://twitter.com/gentoo" title="@Gentoo on Twitter"><span class="fa fa-twitter fa-fw"></span></a></li>
+						<li><a href="https://www.facebook.com/gentoo.org" title="Gentoo on Facebook"><span class="fa fa-facebook fa-fw"></span></a></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="col-xs-9 col-md-9">
+					<strong>&copy; 2001&ndash;2024 Gentoo Authors</strong><br />
+					<small>
+						Gentoo is a trademark of the Gentoo Foundation, Inc. and of Förderverein Gentoo e.V.
+						The contents of this document, unless otherwise expressly stated, are licensed under the
+						<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC-BY-SA-4.0</a> license.
+						The <a href="https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html">Gentoo Name and Logo Usage Guidelines</a> apply.
+					</small>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+<script>
+function defer(method) {
+    if (window.jQuery) {
+        method();
+    } else {
+        setTimeout(function() { defer(method) }, 50);
+    }
+}
+defer(function() { mw.loader.load( 'https://assets.gentoo.org/tyrian/bootstrap.min.js'); });
+</script>
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"smw":{"limitreport-intext-parsertime":0.002},"limitreport":{"cputime":"0.221","walltime":"0.324","ppvisitednodes":{"value":5543,"limit":1000000},"postexpandincludesize":{"value":111015,"limit":4194304},"templateargumentsize":{"value":27925,"limit":4194304},"expansiondepth":{"value":16,"limit":40},"expensivefunctioncount":{"value":42,"limit":150},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":14454,"limit":5000000},"timingprofile":["100.00%  204.957      1 -total"," 36.69%   75.193      1 Template:InfoBox_stack"," 33.53%   68.720      4 Template:InfoBox"," 31.24%   64.021      6 Template:Anchor"," 27.70%   56.774      1 Template:InfoBox_homepage"," 26.35%   54.015     10 Template:See_also"," 23.78%   48.740      1 Template:InfoBox_header"," 10.19%   20.885     36 Template:Link","  7.50%   15.366     26 Template:GenericCmd","  4.36%    8.944     14 Template:Cmd"]},"scribunto":{"limitreport-timeusage":{"value":"0.030","limit":"7"},"limitreport-virtmemusage":{"value":4984832,"limit":52428800},"limitreport-estmemusage":0},"cachereport":{"timestamp":"20241020030428","ttl":86400,"transientcontent":false}}});mw.config.set({"wgBackendResponseTime":54});});</script></body></html>Oŝ�D      g̞g̟GsRcg̟   I    O^partitionKey=%28https%2Cgentoo.org%29,:https://wiki.gentoo.org/wiki/SSH strongly-framed 1 security-info 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 request-method GET request-Accept-Encoding gzip, deflate, br, zstd request-Accept-Language en-US,en;q=0.5 response-head HTTP/2 200 
+server: nginx
+date: Sun, 20 Oct 2024 09:25:51 GMT
+content-type: text/html; charset=UTF-8
+x-content-type-options: nosniff
+content-language: en
+vary: Accept-Encoding, Accept-Language, Cookie, Authorization
+expires: Sun, 20 Oct 2024 09:25:51 GMT
+cache-control: private, must-revalidate, max-age=0
+last-modified: Sun, 20 Oct 2024 09:25:51 GMT
+x-request-id: 6b0f0a47ca7b665216eeeb2e
+x-clacks-overhead: Terry Pratchett, Noirin Trouble Pluinceid, Dan Kaminsky, Kris Nova
+permissions-policy: interest-cohort=()
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000
+X-Firefox-Spdy: h2
+ original-response-headers server: nginx
+date: Sun, 20 Oct 2024 09:25:51 GMT
+content-type: text/html; charset=UTF-8
+x-content-type-options: nosniff
+content-language: en
+vary: Accept-Encoding, Accept-Language, Cookie, Authorization
+expires: Sun, 20 Oct 2024 09:25:51 GMT
+cache-control: private, must-revalidate, max-age=0
+last-modified: Sun, 20 Oct 2024 09:25:51 GMT
+x-request-id: 6b0f0a47ca7b665216eeeb2e
+x-clacks-overhead: Terry Pratchett, Noirin Trouble Pluinceid, Dan Kaminsky, Kris Nova
+permissions-policy: interest-cohort=()
+referrer-policy: strict-origin-when-cross-origin
+strict-transport-security: max-age=31536000
+X-Firefox-Spdy: h2
+ ctid 1 uncompressed-len 0 net-response-time-onstart 1654 net-response-time-onstop 2030  Z1

@@ -1,0 +1,4 @@
+# cd alias
+alias cg="cd $GITHUBDIR"
+alias sd="cd $XDG_CONFIG_HOME/scripts"
+alias ca="cd $XDG_CONFIG_HOME"

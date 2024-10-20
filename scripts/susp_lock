@@ -1,0 +1,4 @@
+#!/bin/sh
+# adis, 2024-03-25
+
+{ sudo s2ram && slock ; } || echo "Error suspening $(date '+%X_%x')" >> /home/adis/.config/scripts/susp_lock.log
